@@ -49,24 +49,36 @@
     </style>
 </head>
 <body class="theme-indigo text-slate-900">
+<div id="settingsModal" class="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[3rem] w-full max-w-lg p-10 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-2xl font-black italic">Hub Settings</h3>
+            <button onclick="closeSettings()" class="h-10 w-10 flex items-center justify-center bg-slate-100 rounded-full hover:bg-slate-200 transition">✕</button>
+        </div>
 
-    <div id="settingsModal" class="fixed inset-0 z-[100] bg-slate-950/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-[3rem] w-full max-w-md p-10 shadow-2xl">
-            <h3 class="text-2xl font-black mb-6">Personalize Hub</h3>
-            <div class="space-y-8">
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-400 mb-4 block">Accent Color & Mode</label>
-                    <div class="flex gap-4">
-                        <button onclick="setTheme('theme-indigo')" class="h-12 w-12 rounded-2xl bg-indigo-600 ring-offset-2 hover:ring-2 ring-indigo-500 transition"></button>
-                        <button onclick="setTheme('theme-emerald')" class="h-12 w-12 rounded-2xl bg-emerald-600 ring-offset-2 hover:ring-2 ring-emerald-500 transition"></button>
-                        <button onclick="setTheme('theme-rose')" class="h-12 w-12 rounded-2xl bg-rose-600 ring-offset-2 hover:ring-2 ring-rose-500 transition"></button>
-                        <button onclick="setTheme('theme-dark')" class="h-12 w-12 rounded-2xl bg-slate-900 border border-slate-700 ring-offset-2 hover:ring-2 ring-slate-800 transition"></button>
-                    </div>
-                </div>
-                <button onclick="closeSettings()" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-bold">Close & Save</button>
+        <div class="mb-10">
+            <label class="text-[10px] font-black uppercase text-slate-400 mb-4 block tracking-widest">Interface Theme</label>
+            <div class="flex gap-4">
+                <button onclick="setTheme('theme-indigo')" class="h-12 w-12 rounded-2xl bg-indigo-600 ring-offset-2 hover:ring-2 ring-indigo-500 transition"></button>
+                <button onclick="setTheme('theme-emerald')" class="h-12 w-12 rounded-2xl bg-emerald-600 ring-offset-2 hover:ring-2 ring-emerald-500 transition"></button>
+                <button onclick="setTheme('theme-rose')" class="h-12 w-12 rounded-2xl bg-rose-600 ring-offset-2 hover:ring-2 ring-rose-500 transition"></button>
+                <button onclick="setTheme('theme-dark')" class="h-12 w-12 rounded-2xl bg-slate-900 border border-slate-700 ring-offset-2 hover:ring-2 ring-slate-800 transition"></button>
             </div>
         </div>
+
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <label class="text-[10px] font-black uppercase text-slate-400 block tracking-widest">Recent Activity</label>
+                <button onclick="clearAllHistory()" class="text-[10px] font-bold text-rose-500 uppercase hover:underline">Clear All</button>
+            </div>
+            
+            <div id="historyList" class="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
+                </div>
+        </div>
+
+        <button onclick="closeSettings()" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-bold hover:bg-indigo-600 transition shadow-xl shadow-slate-200">Save & Exit</button>
     </div>
+</div>
 
     <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
