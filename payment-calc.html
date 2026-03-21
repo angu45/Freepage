@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeRate Hub | The Ultimate Freelance Financial Toolkit</title>
+    <meta name="description" content="Access free freelance tools: Hourly rate calculators, payment fee estimators, and invoice due date trackers. Build a more profitable freelance business today.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tool-card:hover { transform: translateY(-8px); }
+        .gradient-text { background: linear-gradient(90deg, #4f46e5, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-[#fcfcfd] text-slate-900">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold">FR</div>
+                <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-10 font-bold text-slate-500 text-sm uppercase tracking-widest">
+                <a href="#tools" class="hover:text-indigo-600 transition">Calculators</a>
+                <a href="#" class="hover:text-indigo-600 transition">Resources</a>
+                <a href="#" class="hover:text-indigo-600 transition">Guides</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#tools" class="hidden sm:block text-indigo-600 font-bold text-sm">Get Started</a>
+                <button class="bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition shadow-lg shadow-slate-200">
+                    Free Access
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative py-24 overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+                <span class="inline-block py-1 px-4 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-6">Built for the 2026 Gig Economy</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1]">
+                    Master your <span class="gradient-text">Freelance Finances.</span>
+                </h1>
+                <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10">
+                    Stop guessing your prices. Use our data-backed calculators to protect your margins, estimate taxes, and get paid faster.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#tools" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 transition shadow-xl shadow-indigo-100">Explore 5+ Tools</a>
+                    <a href="#" class="bg-white text-slate-900 border border-slate-200 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition">Watch Demo</a>
+                </div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-indigo-50/50 blur-[120px] rounded-full -z-0"></div>
+        </section>
+
+        <section id="tools" class="py-20 max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-3xl font-black text-slate-900 mb-2">The Freelancer's Toolkit</h2>
+                    <p class="text-slate-500">Simple tools to solve complex business problems.</p>
+                </div>
+                <div class="flex gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    <span class="w-3 h-3 rounded-full bg-slate-200"></span>
+                    <span class="w-3 h-3 rounded-full bg-slate-200"></span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="hourly-rate.html" class="tool-card bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 group">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors">⏱️</div>
+                    <h3 class="text-2xl font-bold mb-3">Hourly Rate</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Calculate a sustainable rate based on your life goals, taxes, and overhead expenses.</p>
+                    <span class="text-indigo-600 font-bold inline-flex items-center gap-2">Launch Tool <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span>
+                </a>
+
+                <a href="payment-calc.html" class="tool-card bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 group">
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-colors">💳</div>
+                    <h3 class="text-2xl font-bold mb-3">Fee Calculator</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Stop losing money. Calculate Stripe, PayPal, and Upwork fees before you invoice.</p>
+                    <span class="text-emerald-600 font-bold inline-flex items-center gap-2">Launch Tool <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span>
+                </a>
+
+                <div class="tool-card bg-slate-900 p-10 rounded-[2.5rem] shadow-xl text-white relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4">
+                        <span class="bg-indigo-500 text-[10px] font-black uppercase px-2 py-1 rounded">New</span>
+                    </div>
+                    <div class="w-14 h-14 bg-slate-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-8">📅</div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Project Timelines</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Plan your project phases and never miss a milestone with our smart calendar.</p>
+                    <span class="text-indigo-400 font-bold inline-flex items-center gap-2">Coming Soon <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /></svg></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-white pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold text-sm leading-none">FR</div>
+                        <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                        The world’s most intuitive financial toolkit for the modern freelancer. Built with passion to help you grow.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center hover:bg-indigo-600 transition cursor-pointer">𝕏</div>
+                        <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center hover:bg-indigo-600 transition cursor-pointer">in</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-indigo-400 mb-8">Calculators</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm font-medium">
+                        <li><a href="hourly-rate.html" class="hover:text-white transition">Hourly Rate Calc</a></li>
+                        <li><a href="payment-calc.html" class="hover:text-white transition">PayPal Fee Tool</a></li>
+                        <li><a href="payment-calc.html" class="hover:text-white transition">Invoice Due Dates</a></li>
+                        <li><a href="#" class="hover:text-white transition">Project Estimator</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-indigo-400 mb-8">Resources</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm font-medium">
+                        <li><a href="#" class="hover:text-white transition">Freelance Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pricing Ebook</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contract Templates</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tax Guide 2026</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-indigo-400 mb-8">Newsletter</h4>
+                    <p class="text-slate-400 text-xs mb-4">Get pricing tips delivered to your inbox.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Email address" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                        <button class="bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-500 transition">Join 5k+ Pros</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-slate-500 text-xs font-medium">
+                    &copy; 2026 FreeRate Technologies. All rights reserved.
+                </div>
+                <div class="flex gap-8 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
+                    <a href="#" class="hover:text-white transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
