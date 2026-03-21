@@ -65,7 +65,9 @@
         </div>
     </footer>
 
-    <script>
+    <script>// Example: if 'annualGoal' is the target
+saveToHistory("Revenue Goal", `Target set to $${annualGoal}/year`);
+
         function forecast() {
             const annual = parseFloat(document.getElementById('annualGoal').value) || 0;
             const price = parseFloat(document.getElementById('avgProject').value) || 1;
