@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Tax & Savings Estimator | FreeRate Tools</title>
+    <meta name="description" content="Calculate how much to set aside for taxes and business savings from every freelance payment. Stay tax-ready with FreeRate.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bucket-card { transition: all 0.3s ease; }
+        .bucket-card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold">FR</div>
+                <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+            </a>
+            <nav class="hidden md:flex gap-8 font-bold text-slate-600 text-sm uppercase">
+                <a href="hourly-rate.html" class="hover:text-indigo-600 transition">Hourly</a>
+                <a href="payment-calc.html" class="hover:text-indigo-600 transition">Payments</a>
+                <a href="tax-calc.html" class="text-indigo-600">Tax Estimator</a>
+            </nav>
+            <a href="index.html" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm">Dashboard</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-black mb-4">Tax & Savings <span class="text-indigo-600">Splitter</span></h1>
+            <p class="text-slate-500">Know exactly how much of that client payment is actually yours to spend.</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200 mb-12">
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Invoice Amount Received ($)</label>
+                    <input type="number" id="grossInput" value="2500" oninput="calculateSplit()" class="w-full p-5 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 font-bold text-2xl outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-black uppercase text-slate-400 mb-2">Tax Rate (%)</label>
+                        <input type="number" id="taxRate" value="25" oninput="calculateSplit()" class="w-full p-4 bg-slate-50 rounded-xl border-none font-bold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase text-slate-400 mb-2">Business Savings (%)</label>
+                        <input type="number" id="saveRate" value="10" oninput="calculateSplit()" class="w-full p-4 bg-slate-50 rounded-xl border-none font-bold">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bucket-card bg-rose-50 p-8 rounded-[2rem] border border-rose-100">
+                <p class="text-rose-600 font-bold text-xs uppercase tracking-widest mb-2">Set Aside for Tax</p>
+                <h2 id="taxTotal" class="text-3xl font-black text-rose-900">$625.00</h2>
+                <p class="text-rose-700/60 text-xs mt-4 italic">Move this to a separate tax account immediately.</p>
+            </div>
+
+            <div class="bucket-card bg-amber-50 p-8 rounded-[2rem] border border-amber-100">
+                <p class="text-amber-600 font-bold text-xs uppercase tracking-widest mb-2">Business Savings</p>
+                <h2 id="saveTotal" class="text-3xl font-black text-amber-900">$250.00</h2>
+                <p class="text-amber-700/60 text-xs mt-4 italic">For new gear, software, and dry spells.</p>
+            </div>
+
+            <div class="bucket-card bg-emerald-600 p-8 rounded-[2rem] text-white shadow-xl shadow-emerald-100">
+                <p class="text-emerald-100 font-bold text-xs uppercase tracking-widest mb-2">Spendable Income</p>
+                <h2 id="spendTotal" class="text-4xl font-black">$1,625.00</h2>
+                <p class="text-emerald-200 text-xs mt-4 font-medium">This is yours to keep!</p>
+            </div>
+        </div>
+
+        <section class="mt-24 prose prose-slate max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-6">The "Bucket Method" for Freelancers</h2>
+            <p class="text-slate-600">
+                One of the biggest mistakes new freelancers make is spending 100% of every check they receive. When tax season arrives, they are hit with a massive bill they can't pay. 
+            </p>
+            <p class="text-slate-600">
+                By using our <strong>Tax & Savings Splitter</strong>, you create a sustainable financial system. We recommend opening three separate bank accounts: <strong>Operations</strong> (Spendable), <strong>Tax</strong>, and <strong>Emergency Fund</strong>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-2 mb-8">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold">FR</div>
+                <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-8 mb-12 text-sm font-bold text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="hourly-rate.html" class="hover:text-white transition">Hourly Rate</a>
+                <a href="payment-calc.html" class="hover:text-white transition">Fee Calc</a>
+                <a href="profit-calc.html" class="hover:text-white transition">Profitability</a>
+            </nav>
+            <div class="pt-8 border-t border-slate-900">
+                <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase tracking-widest">
+                    Empowering the independent workforce &copy; 2026
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calculateSplit() {
+            const gross = parseFloat(document.getElementById('grossInput').value) || 0;
+            const taxPerc = parseFloat(document.getElementById('taxRate').value) || 0;
+            const savePerc = parseFloat(document.getElementById('saveRate').value) || 0;
+
+            const tax = gross * (taxPerc / 100);
+            const save = gross * (savePerc / 100);
+            const spend = gross - tax - save;
+
+            document.getElementById('taxTotal').innerText = '$' + tax.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('saveTotal').innerText = '$' + save.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('spendTotal').innerText = '$' + spend.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+        window.onload = calculateSplit;
+    </script>
+</body>
+</html>
