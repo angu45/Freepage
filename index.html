@@ -3,134 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreeRate | 5+ Free Tools for Freelance Finance & Pricing</title>
-    <meta name="description" content="Free tools for freelancers: Calculate hourly rates, PayPal fees, project quotes, and tax buffers. The simple way to manage your freelance money.">
+    <title>FreeRate Hub | 10+ Free Financial Tools for Freelancers & Solo-Preneurs</title>
     
+    <meta name="description" content="Master your freelance business with FreeRate. 10+ free tools including hourly rate calculators, tax splitters, invoice generators, and pitch trackers. No sign-up required.">
+    <meta name="keywords" content="freelance rate calculator, self-employment tax tool, freelance pitch tracker, invoice generator free, project profit margin">
+    
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2450/2450254.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .tool-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        :root { --primary: #4f46e5; --bg: #f8fafc; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg);
+            background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+            background-size: 30px 30px;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+        
+        /* Premium Card Styling */
+        .tool-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .tool-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px -12px rgba(79, 70, 229, 0.15);
+            border-color: var(--primary);
+        }
+
+        /* Themes Configuration */
+        .theme-indigo { --primary: #4f46e5; --bg: #f8fafc; }
+        .theme-emerald { --primary: #059669; --bg: #f0fdf4; }
+        .theme-rose { --primary: #e11d48; --bg: #fff1f2; }
+        .theme-dark { --primary: #818cf8; --bg: #0f172a; }
+        
+        .theme-dark body { background-color: #0f172a; color: #f1f5f9; background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px); }
+        .theme-dark .tool-card { background: #1e293b; border-color: #334155; color: white; }
+        .theme-dark p { color: #94a3b8; }
+        .theme-dark nav { background: rgba(15, 23, 42, 0.8); border-color: #1e293b; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="theme-indigo text-slate-900">
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 border-b border-slate-200 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="bg-indigo-600 p-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+    <div id="settingsModal" class="fixed inset-0 z-[100] bg-slate-950/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-[3rem] w-full max-w-md p-10 shadow-2xl">
+            <h3 class="text-2xl font-black mb-6">Personalize Hub</h3>
+            <div class="space-y-8">
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-400 mb-4 block">Accent Color & Mode</label>
+                    <div class="flex gap-4">
+                        <button onclick="setTheme('theme-indigo')" class="h-12 w-12 rounded-2xl bg-indigo-600 ring-offset-2 hover:ring-2 ring-indigo-500 transition"></button>
+                        <button onclick="setTheme('theme-emerald')" class="h-12 w-12 rounded-2xl bg-emerald-600 ring-offset-2 hover:ring-2 ring-emerald-500 transition"></button>
+                        <button onclick="setTheme('theme-rose')" class="h-12 w-12 rounded-2xl bg-rose-600 ring-offset-2 hover:ring-2 ring-rose-500 transition"></button>
+                        <button onclick="setTheme('theme-dark')" class="h-12 w-12 rounded-2xl bg-slate-900 border border-slate-700 ring-offset-2 hover:ring-2 ring-slate-800 transition"></button>
+                    </div>
                 </div>
-                <span class="text-2xl font-extrabold tracking-tight text-slate-800">FreeRate</span>
+                <button onclick="closeSettings()" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-bold">Close & Save</button>
             </div>
-            <nav class="hidden md:flex gap-8 font-semibold text-slate-600">
-                <a href="#tools" class="hover:text-indigo-600">Tools</a>
-                <a href="#" class="hover:text-indigo-600">Guides</a>
-                <a href="#" class="hover:text-indigo-600">Pricing</a>
-            </nav>
-            <button class="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition">
-                Free Sign Up
-            </button>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold shadow-lg" id="logoBox">FR</div>
+                <span class="text-xl font-black tracking-tighter">FreeRate<span class="text-indigo-600" id="dotBox">.</span></span>
+            </div>
+
+            <div class="flex-grow max-w-xl hidden md:block">
+                <div class="relative group">
+                    <input type="text" id="toolSearch" onkeyup="searchTools()" placeholder="Search 9+ freelance tools..." 
+                        class="w-full bg-slate-100/80 border-none py-3 px-12 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500/20 transition">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 opacity-40">🔍</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openSettings()" class="p-3 bg-slate-100 rounded-2xl hover:bg-slate-200 transition">⚙️</button>
+                <button class="bg-slate-950 text-white px-6 py-3 rounded-2xl font-bold text-sm hidden sm:block">Explore Docs</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 inline-block">The 2026 Solo-Preneur Toolkit</span>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8">Run your business <br><span class="text-indigo-600">without the stress.</span></h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">Stop using complex spreadsheets. Access our suite of lightweight, professional tools to manage your pricing, taxes, and growth in one place.</p>
         </div>
     </header>
 
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest">SEO Optimized Tools</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold mt-6 mb-8 text-slate-900">Get your <span class="text-indigo-600">Freelance Finance</span> right.</h1>
-            <p class="text-xl text-slate-500 leading-relaxed mb-10">Simple, fast, and free calculators designed to help you stop undercharging and start building a profitable business.</p>
-        </div>
-    </section>
-
-    <section id="tools" class="max-w-6xl mx-auto px-6 pb-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="toolGrid">
             
-            <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">⏱️</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Hourly Rate Calc</h3>
-                <p class="text-slate-500 text-sm mb-6">Calculate what you need to earn per hour to cover expenses and taxes.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Open Tool <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="hourly-rate.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">⏱️</div>
+                <h4 class="font-bold text-xl mb-3">Hourly Rate Calc</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Set your rates based on real overhead, tax liabilities, and lifestyle goals. Stop guessing your value.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-indigo-600">Pricing</div>
+            </a>
 
-            <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">💳</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Fee Calculator</h3>
-                <p class="text-slate-500 text-sm mb-6">See how much Stripe or PayPal takes from your invoice total.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Calculate Fees <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="tax-calc.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🏛️</div>
+                <h4 class="font-bold text-xl mb-3">Tax & Savings Splitter</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">The ultimate "bucket" tool. Know exactly how much to save from every invoice for a stress-free tax season.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-rose-600">Finance</div>
+            </a>
 
-            <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">📅</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Invoice Due Date</h3>
-                <p class="text-slate-500 text-sm mb-6">Calculate Net-15, Net-30, or Net-60 dates for your professional invoices.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Check Date <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="invoice-gen.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📄</div>
+                <h4 class="font-bold text-xl mb-3">Invoice Generator</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Create professional, high-converting PDF invoices for your clients in under 60 seconds.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-emerald-600">Payments</div>
+            </a>
 
-            <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">📈</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Profit Margin Calc</h3>
-                <p class="text-slate-500 text-sm mb-6">Ensure every project you take is actually profitable after costs.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Analyze Profit <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="pitch-tracker.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🎯</div>
+                <h4 class="font-bold text-xl mb-3">Pitch & Outreach Tracker</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Track your leads from cold outreach to signed contract. Never lose a potential client again.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-sky-600">Sales</div>
+            </a>
 
-            <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">👔</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Salary Converter</h3>
-                <p class="text-slate-500 text-sm mb-6">Compare your freelance day rate to a corporate annual salary.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Compare Now <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="profit-calc.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">💰</div>
+                <h4 class="font-bold text-xl mb-3">Profit Margin Calc</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Analyze project profitability after accounting for all hidden costs and labor hours.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-amber-600">Analysis</div>
+            </a>
 
-             <div class="tool-card bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="text-3xl mb-4">🛡️</div>
-                <h3 class="text-xl font-bold mb-2 text-slate-800">Emergency Fund</h3>
-                <p class="text-slate-500 text-sm mb-6">Know exactly how much to save to survive 6 months without work.</p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all">
-                    Build Buffer <span class="ml-2">→</span>
-                </a>
-            </div>
+            <a href="revenue-goal.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-violet-50 text-violet-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🚀</div>
+                <h4 class="font-bold text-xl mb-3">Revenue Forecaster</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Set annual income goals and visualize the roadmap to hitting your dream numbers.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-violet-600">Growth</div>
+            </a>
 
+            <a href="client-score.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">⚖️</div>
+                <h4 class="font-bold text-xl mb-3">Client Value Score</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Grade your clients based on ROI, communication, and stress levels to optimize your roster.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-rose-600">Admin</div>
+            </a>
+
+            <a href="payment-calc.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group">
+                <div class="h-14 w-14 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">💳</div>
+                <h4 class="font-bold text-xl mb-3">Payment Fee Calc</h4>
+                <p class="text-slate-500 text-xs leading-relaxed flex-grow">Instantly calculate Stripe, PayPal, and Upwork fees to ensure you get paid what you're owed.</p>
+                <div class="mt-6 pt-6 border-t border-slate-50 text-[10px] font-black uppercase tracking-widest text-slate-500">Fees</div>
+            </a>
+
+            <a href="index.html" class="tool-card p-8 rounded-[2.5rem] flex flex-col group bg-indigo-600 text-white !border-none">
+                <div class="text-3xl mb-4 group-hover:rotate-12 transition">📝</div>
+                <h4 class="font-bold text-xl mb-3">Contract Generator</h4>
+                <p class="text-indigo-100 text-xs leading-relaxed flex-grow">Generate professional service agreements with kill-fees and payment protection clauses.</p>
+                <div class="mt-6 pt-6 border-t border-indigo-400 text-[10px] font-black uppercase">Legal (BETA)</div>
+            </a>
+        </div>
+    </main>
+
+    <section class="bg-white py-24 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-black mb-8">Professional Freelance Tools, Simplified.</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-slate-500 leading-relaxed text-sm">
+                <p><strong>FreeRate Hub</strong> was built for the modern independent professional who needs high-level financial data without the overhead of enterprise software. Whether you are a designer, developer, or consultant, our calculators are updated for **2026 tax standards** and global payment platform fees.</p>
+                <p>All of our tools are **client-side encrypted**, meaning your financial data never leaves your browser. We prioritize your privacy and business security, ensuring you can calculate rates and generate contracts with total peace of mind.</p>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-16">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-                <span class="text-white text-2xl font-bold mb-4 block">FreeRate</span>
-                <p class="text-sm leading-relaxed">The world's favorite toolkit for freelance financial planning. Simple tools, no spreadsheets required.</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Quick Links</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-white transition">About the Project</a></li>
-                    <li><a href="#" class="hover:text-white transition">Freelance Blog</a></li>
-                    <li><a href="#" class="hover:text-white transition">SEO Guide for Freelancers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Connect</h4>
-                <div class="flex gap-4">
-                    <a href="#" class="bg-slate-800 p-2 rounded-lg hover:bg-indigo-600 transition">Twitter</a>
-                    <a href="#" class="bg-slate-800 p-2 rounded-lg hover:bg-indigo-600 transition">LinkedIn</a>
+    <footer class="bg-slate-950 text-white pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 border-b border-slate-900 pb-16">
+                <div>
+                    <div class="text-2xl font-black mb-6">FreeRate<span class="text-indigo-600">.</span></div>
+                    <p class="text-slate-500 text-xs leading-relaxed">The definitively fast and free toolkit for solo-entrepreneurs and digital nomads worldwide.</p>
+                </div>
+                <div>
+                    <h6 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500 mb-8">Quick Links</h6>
+                    <ul class="space-y-4 text-xs text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">Pricing Calculators</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contract Maker</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tax Estimators</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500 mb-8">Support</h6>
+                    <ul class="space-y-4 text-xs text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">User Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition">SEO for Freelancers</a></li>
+                        <li><a href="#" class="hover:text-white transition">v2.0 Beta Feedback</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500 mb-8">Connect</h6>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-slate-900 rounded-xl hover:bg-indigo-600 transition cursor-pointer"></div>
+                        <div class="w-10 h-10 bg-slate-900 rounded-xl hover:bg-indigo-600 transition cursor-pointer"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
-            &copy; 2026 FreeRate. Designed for Search Rankings & User Experience.
+            <p class="text-slate-700 text-[10px] font-black uppercase tracking-[0.5em] text-center">Empowering Independent Freedom &copy; 2026</p>
         </div>
     </footer>
 
+    <script>
+        function setTheme(theme) {
+            document.body.className = theme;
+            localStorage.setItem('hub-theme', theme);
+        }
+
+        function openSettings() { document.getElementById('settingsModal').classList.remove('hidden'); }
+        function closeSettings() { document.getElementById('settingsModal').classList.add('hidden'); }
+
+        function searchTools() {
+            let filter = document.getElementById('toolSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.tool-card');
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                card.style.display = text.includes(filter) ? "flex" : "none";
+            });
+        }
+
+        window.onload = () => {
+            const saved = localStorage.getItem('hub-theme') || 'theme-indigo';
+            setTheme(saved);
+        }
+    </script>
 </body>
 </html>
