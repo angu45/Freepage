@@ -108,7 +108,9 @@
         </div>
     </footer>
 
-    <script>
+    <script>// Example: if 'invoiceTotal' is the input amount
+saveToHistory("Tax Splitter", `Split invoice of $${invoiceTotal}`);
+
         function calculateSplit() {
             const gross = parseFloat(document.getElementById('grossInput').value) || 0;
             const taxPerc = parseFloat(document.getElementById('taxRate').value) || 0;
