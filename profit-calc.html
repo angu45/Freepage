@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Profit & Margin Calculator | FreeRate Tools</title>
+    <meta name="description" content="Calculate project profitability, overhead costs, and net profit margins. Ensure every freelance project is worth your time with FreeRate.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .input-card { transition: transform 0.2s ease; }
+        .input-card:focus-within { transform: scale(1.01); border-color: #4f46e5; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold">FR</div>
+                <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+            </a>
+            <nav class="hidden md:flex gap-8 font-bold text-slate-600 text-sm uppercase">
+                <a href="hourly-rate.html" class="hover:text-indigo-600 transition">Hourly</a>
+                <a href="payment-calc.html" class="hover:text-indigo-600 transition">Payments</a>
+                <a href="profit-calc.html" class="text-indigo-600">Profit Calc</a>
+            </nav>
+            <a href="index.html" class="border border-slate-200 px-5 py-2 rounded-xl font-bold text-sm hover:bg-slate-50 transition">Exit Tool</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <div class="mb-12">
+            <h1 class="text-4xl font-black mb-4">Project <span class="text-indigo-600">Profitability</span> Estimator</h1>
+            <p class="text-slate-500">Determine if a flat-fee project actually hits your income goals.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm input-card">
+                    <h3 class="font-bold text-lg mb-6">Project Details</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Total Project Fee ($)</label>
+                            <input type="number" id="projectFee" value="3000" oninput="calculateProfit()" class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500 font-bold text-lg">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Estimated Hours</label>
+                            <input type="number" id="estHours" value="40" oninput="calculateProfit()" class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500 font-bold text-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm input-card">
+                    <h3 class="font-bold text-lg mb-6 text-rose-600">External Costs (Subcontractors, Software, Ads)</h3>
+                    <div class="relative">
+                        <span class="absolute left-4 top-4 text-slate-400">$</span>
+                        <input type="number" id="extraCosts" value="200" oninput="calculateProfit()" class="w-full pl-8 pr-4 py-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-rose-500 font-bold">
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-indigo-600 rounded-[2.5rem] p-10 text-white shadow-2xl shadow-indigo-100">
+                    <p class="text-indigo-200 text-xs font-bold uppercase tracking-widest mb-2">Effective Hourly Rate</p>
+                    <div id="effectiveRate" class="text-5xl font-black mb-8">$70.00</div>
+                    
+                    <div class="space-y-4 pt-6 border-t border-indigo-500/50">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-indigo-200">Net Profit:</span>
+                            <span id="netProfit" class="font-bold">$2,800</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-indigo-200">Profit Margin:</span>
+                            <span id="marginPerc" class="font-bold text-emerald-300">93.3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statusBox" class="p-6 rounded-3xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-sm font-medium">
+                    ✨ This project exceeds your target average!
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-24 max-w-4xl">
+            <h2 class="text-2xl font-bold mb-6">Why you need to track Project Margins</h2>
+            <div class="prose prose-slate text-slate-600 space-y-4">
+                <p>When you take on a flat-fee project, your biggest risk is **Scope Creep**. If a $2,000 project takes 20 hours, you earn $100/hr. If it takes 40 hours because of "extra edits," you've just cut your pay to $50/hr.</p>
+                <p>Use this tool to factor in <strong>External Costs</strong>. If you are hiring a voiceover artist or buying stock photos for a client, that money shouldn't be counted as your profit.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-900 pb-16 mb-10">
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="bg-indigo-600 p-1.5 rounded-lg text-white font-bold text-xs">FR</div>
+                    <span class="text-xl font-bold tracking-tight">FreeRate Hub</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    The modern freelancer's command center for financial clarity. Built to help you charge what you're worth.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-indigo-400 text-xs font-black uppercase tracking-[0.2em] mb-6">Quick Links</h4>
+                <nav class="flex flex-col gap-3 text-sm text-slate-300">
+                    <a href="index.html" class="hover:text-white transition">Dashboard</a>
+                    <a href="hourly-rate.html" class="hover:text-white transition">Hourly Rate Calc</a>
+                    <a href="payment-calc.html" class="hover:text-white transition">Fee Calculator</a>
+                </nav>
+            </div>
+            <div>
+                <h4 class="text-indigo-400 text-xs font-black uppercase tracking-[0.2em] mb-6">Legal & Support</h4>
+                <nav class="flex flex-col gap-3 text-sm text-slate-300">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition">Sitemap</a>
+                </nav>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-slate-600 text-[10px] font-bold tracking-widest uppercase italic">Empowering the independent workforce &copy; 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateProfit() {
+            const fee = parseFloat(document.getElementById('projectFee').value) || 0;
+            const hours = parseFloat(document.getElementById('estHours').value) || 0;
+            const costs = parseFloat(document.getElementById('extraCosts').value) || 0;
+
+            const netProfit = fee - costs;
+            const rate = hours > 0 ? netProfit / hours : 0;
+            const margin = fee > 0 ? (netProfit / fee) * 100 : 0;
+
+            document.getElementById('netProfit').innerText = '$' + netProfit.toLocaleString();
+            document.getElementById('effectiveRate').innerText = '$' + rate.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('marginPerc').innerText = margin.toFixed(1) + '%';
+
+            const statusBox = document.getElementById('statusBox');
+            if (rate < 40) {
+                statusBox.innerText = "⚠️ Careful: This rate is below the freelance average.";
+                statusBox.className = "p-6 rounded-3xl bg-rose-50 border border-rose-100 text-rose-800 text-sm font-medium";
+            } else {
+                statusBox.innerText = "✨ This project exceeds your target average!";
+                statusBox.className = "p-6 rounded-3xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-sm font-medium";
+            }
+        }
+        window.onload = calculateProfit;
+    </script>
+</body>
+</html>
