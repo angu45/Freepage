@@ -47,6 +47,7 @@
         .theme-dark p { color: #94a3b8; }
         .theme-dark nav { background: rgba(15, 23, 42, 0.8); border-color: #1e293b; }
     </style>
+    <script src="script.js"></script>
 </head>
 <body class="theme-indigo text-slate-900">
 <div id="settingsModal" class="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-md hidden flex items-center justify-center p-4">
@@ -224,6 +225,7 @@
     </footer>
 
     <script>
+
         function setTheme(theme) {
             document.body.className = theme;
             localStorage.setItem('hub-theme', theme);
