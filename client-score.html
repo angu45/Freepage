@@ -59,7 +59,9 @@
         </div>
     </footer>
 
-    <script>
+    <script>// Example: if 'clientGrade' is the result (e.g., "A+")
+saveToHistory("Client Score", `Graded ${clientName} as ${clientGrade}`);
+
         function auditClient() {
             const s1 = parseInt(document.getElementById('q1').value);
             const s2 = parseInt(document.getElementById('q2').value);
