@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Rate Calculator | FreeRate - Stop Undercharging as a Freelancer</title>
+    <meta name="description" content="Calculate the perfect freelance hourly rate. Account for taxes, business expenses, and billable hours with our free professional calculator.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .input-focus:focus { border-color: #4f46e5; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); outline: none; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 leading-relaxed">
+
+    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-indigo-600 p-2 rounded-xl group-hover:rotate-3 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tighter text-slate-900">FreeRate</span>
+            </a>
+            <nav class="hidden md:flex gap-8 font-bold text-slate-600 text-sm uppercase tracking-wider">
+                <a href="index.html" class="hover:text-indigo-600 transition">All Tools</a>
+                <a href="#how-to" class="hover:text-indigo-600 transition">How it Works</a>
+                <a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
+            </nav>
+            <a href="index.html" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-600 transition shadow-lg shadow-slate-200">
+                Main Dashboard
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="py-16 bg-white border-b border-slate-100">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Freelance <span class="text-indigo-600">Hourly Rate</span> Calculator</h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">Most freelancers forget to account for holidays, sick leave, and taxes. Use this tool to ensure your business remains profitable year-round.</p>
+            </div>
+        </section>
+
+        <section class="py-12 px-6">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-800">
+                            <span class="w-2 h-8 bg-indigo-600 rounded-full"></span> 1. Financial Goals
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-600 mb-2">Target Annual Income (Net)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-4 text-slate-400">$</span>
+                                    <input type="number" id="annualIncome" value="60000" class="w-full pl-8 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl input-focus font-semibold">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-600 mb-2">Annual Business Expenses</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-4 text-slate-400">$</span>
+                                    <input type="number" id="expenses" value="8000" class="w-full pl-8 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl input-focus font-semibold">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-800">
+                            <span class="w-2 h-8 bg-emerald-500 rounded-full"></span> 2. Time Availability
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-600 mb-2">Billable Weeks / Year</label>
+                                <input type="number" id="weeks" value="48" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl input-focus font-semibold">
+                                <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold tracking-wider">Subtract 4 weeks for holidays/sick leave</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-600 mb-2">Billable Hours / Week</label>
+                                <input type="number" id="hours" value="25" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl input-focus font-semibold">
+                                <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold tracking-wider">Accounting for admin & marketing time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900 p-10 rounded-[2.5rem] sticky top-28 shadow-2xl shadow-indigo-200 overflow-hidden relative">
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-indigo-500/10 rounded-full"></div>
+                        
+                        <h2 class="text-indigo-400 font-bold uppercase tracking-[0.2em] text-xs mb-6">Target Hourly Rate</h2>
+                        <div id="resultRate" class="text-6xl font-black text-white mb-2 leading-none">$56.67</div>
+                        <p class="text-slate-400 font-medium mb-10">Calculated for your goals</p>
+
+                        <div class="space-y-5">
+                            <div class="flex justify-between items-center py-4 border-t border-slate-800">
+                                <span class="text-slate-400 text-sm font-medium">Annual Gross Revenue</span>
+                                <span id="totalRevenue" class="text-white font-bold">$68,000</span>
+                            </div>
+                            <div class="flex justify-between items-center py-4 border-t border-slate-800">
+                                <span class="text-slate-400 text-sm font-medium">Total Billable Hours</span>
+                                <span id="totalHours" class="text-white font-bold">1,200</span>
+                            </div>
+                        </div>
+
+                        <button onclick="calculateRate()" class="w-full mt-10 bg-indigo-600 text-white py-5 rounded-2xl font-extrabold hover:bg-indigo-500 transition-all flex items-center justify-center gap-3">
+                            Recalculate <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to" class="py-24 max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-extrabold mb-8 text-slate-900">Why your freelance rate is usually too low</h2>
+            <div class="grid md:grid-cols-2 gap-10 mb-12">
+                <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="font-bold text-indigo-600 mb-3">The "Hidden Costs"</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Unlike employees, you pay for your own laptop, software (Adobe, Slack, AI tools), health insurance, and office space. If you don't add these to your rate, you are paying your client to work for them.</p>
+                </div>
+                <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="font-bold text-indigo-600 mb-3">The "Tax Trap"</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">The income you calculate here is <strong>Gross Revenue</strong>. Depending on your country, you should set aside 15% to 35% of every dollar you earn for income tax and self-employment tax.</p>
+                </div>
+            </div>
+
+            <div id="faq" class="space-y-6">
+                <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+                <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <summary class="p-6 font-bold cursor-pointer flex justify-between items-center list-none group-open:bg-indigo-50 transition">
+                        How many billable hours can I actually work?
+                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 text-sm">
+                        Most freelancers can only sustain 20 to 25 billable hours per week. The rest of your 40-hour week is spent on marketing, sending invoices, and finding new clients.
+                    </div>
+                </details>
+                <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <summary class="p-6 font-bold cursor-pointer flex justify-between items-center list-none group-open:bg-indigo-50 transition">
+                        Should I charge by the hour or by the project?
+                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 text-sm">
+                        Hourly rates are great for ongoing support. However, for specific projects, "Value-Based Pricing" is often better. Use this calculator to find your *minimum* base rate, then quote projects based on the value delivered to the client.
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="bg-indigo-600 p-1.5 rounded-lg text-white font-bold text-xs uppercase">FR</div>
+                    <span class="text-xl font-bold tracking-tight">FreeRate</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">Built for freelancers, by freelancers. Helping 10,000+ pros price their work with confidence.</p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-indigo-400 uppercase text-xs tracking-widest">Other Tools</h5>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li><a href="#" class="hover:text-white transition">PayPal Fee Calc</a></li>
+                    <li><a href="#" class="hover:text-white transition">Project Estimator</a></li>
+                    <li><a href="#" class="hover:text-white transition">Invoice Generator</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-indigo-400 uppercase text-xs tracking-widest">Resources</h5>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li><a href="#" class="hover:text-white transition">Freelance Blog</a></li>
+                    <li><a href="#" class="hover:text-white transition">Pricing Ebook</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contract Templates</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-indigo-400 uppercase text-xs tracking-widest">About</h5>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li><a href="#" class="hover:text-white transition">Our Mission</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 border-t border-slate-900 text-center">
+            <p class="text-slate-500 text-xs tracking-widest font-bold">© 2026 FREERATE HUB. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateRate() {
+            const income = parseFloat(document.getElementById('annualIncome').value) || 0;
+            const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+            const weeks = parseFloat(document.getElementById('weeks').value) || 0;
+            const hours = parseFloat(document.getElementById('hours').value) || 0;
+
+            const totalRevenue = income + expenses;
+            const totalHours = weeks * hours;
+            
+            if (totalHours > 0) {
+                const rate = totalRevenue / totalHours;
+                
+                // Update UI with animation
+                document.getElementById('resultRate').innerText = '$' + rate.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('totalRevenue').innerText = '$' + totalRevenue.toLocaleString();
+                document.getElementById('totalHours').innerText = totalHours.toLocaleString();
+            }
+        }
+    </script>
+</body>
+</html>
