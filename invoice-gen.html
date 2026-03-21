@@ -144,7 +144,9 @@
         </div>
     </footer>
 
-    <script>
+    <script>// Example: if 'clientName' and 'grandTotal' are variables
+saveToHistory("Invoice Gen", `Generated $${grandTotal} for ${clientName}`);
+
         function addRow() {
             const tbody = document.getElementById('invoiceBody');
             const row = document.createElement('tr');
