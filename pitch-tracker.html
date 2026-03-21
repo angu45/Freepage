@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch & Outreach Tracker | FreeRate Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .status-pill { transition: all 0.2s; }
+        .status-sent { background: #e0f2fe; color: #0369a1; }
+        .status-replied { background: #fef3c7; color: #92400e; }
+        .status-won { background: #dcfce7; color: #166534; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white font-bold">FR</div>
+                <span class="text-2xl font-extrabold tracking-tighter">FreeRate</span>
+            </a>
+            <div class="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Sales Pipeline v1.0</div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+            <div>
+                <h1 class="text-4xl font-black mb-2">Outreach <span class="text-indigo-600">Tracker</span></h1>
+                <p class="text-slate-500 text-sm">Track your leads from first "Hello" to signed contract.</p>
+            </div>
+            <button onclick="addLead()" class="bg-indigo-600 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
+                + Add New Lead
+            </button>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-slate-200">
+                        <th class="p-6 text-[10px] font-black uppercase text-slate-400">Client / Company</th>
+                        <th class="p-6 text-[10px] font-black uppercase text-slate-400">Platform</th>
+                        <th class="p-6 text-[10px] font-black uppercase text-slate-400">Status</th>
+                        <th class="p-6 text-[10px] font-black uppercase text-slate-400">Last Follow-up</th>
+                        <th class="p-6 text-[10px] font-black uppercase text-slate-400 text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="leadTable">
+                    <tr class="border-b border-slate-100 group">
+                        <td class="p-6 font-bold">Acme Corp</td>
+                        <td class="p-6 text-sm text-slate-500">LinkedIn</td>
+                        <td class="p-6">
+                            <select onchange="updatePill(this)" class="status-pill status-sent text-[10px] font-black uppercase px-3 py-1 rounded-full border-none focus:ring-0 cursor-pointer">
+                                <option value="sent">Sent</option>
+                                <option value="replied">Replied</option>
+                                <option value="won">Won</option>
+                            </select>
+                        </td>
+                        <td class="p-6 text-sm text-slate-400">March 21, 2026</td>
+                        <td class="p-6 text-right">
+                            <button onclick="this.closest('tr').remove()" class="text-slate-300 hover:text-rose-500 transition">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-16 grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white rounded-3xl border border-slate-200">
+                <div class="text-2xl mb-4">📧</div>
+                <h4 class="font-bold mb-2">The 3-Day Rule</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">If a client doesn't reply to your first pitch, follow up exactly 3 business days later. 70% of freelance gigs are won on the follow-up.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl border border-slate-200">
+                <div class="text-2xl mb-4">🤝</div>
+                <h4 class="font-bold mb-2">Value-First Pitching</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Instead of asking for work, point out one specific thing the client could improve and offer a quick tip. Build authority first.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl border border-slate-200">
+                <div class="text-2xl mb-4">📊</div>
+                <h4 class="font-bold mb-2">Pipeline Health</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Aim to have at least 10 active leads in your "Replied" status at all times to ensure consistent monthly income.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-slate-600 text-[10px] font-black uppercase tracking-[0.4em]">Scaling the Future of Work &copy; 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        function addLead() {
+            const table = document.getElementById('leadTable');
+            const row = document.createElement('tr');
+            row.className = "border-b border-slate-100 group";
+            row.innerHTML = `
+                <td class="p-6 font-bold"><input type="text" placeholder="New Client..." class="border-none p-0 focus:ring-0 font-bold w-full"></td>
+                <td class="p-6 text-sm text-slate-500"><input type="text" placeholder="e.g. Email" class="border-none p-0 focus:ring-0 text-sm w-full"></td>
+                <td class="p-6">
+                    <select onchange="updatePill(this)" class="status-pill status-sent text-[10px] font-black uppercase px-3 py-1 rounded-full border-none focus:ring-0 cursor-pointer">
+                        <option value="sent">Sent</option>
+                        <option value="replied">Replied</option>
+                        <option value="won">Won</option>
+                    </select>
+                </td>
+                <td class="p-6 text-sm text-slate-400">${new Date().toLocaleDateString()}</td>
+                <td class="p-6 text-right">
+                    <button onclick="this.closest('tr').remove()" class="text-slate-300 hover:text-rose-500 transition">Remove</button>
+                </td>
+            `;
+            table.appendChild(row);
+        }
+
+        function updatePill(select) {
+            select.classList.remove('status-sent', 'status-replied', 'status-won');
+            if (select.value === 'sent') select.classList.add('status-sent');
+            if (select.value === 'replied') select.classList.add('status-replied');
+            if (select.value === 'won') select.classList.add('status-won');
+        }
+    </script>
+</body>
+</html>
